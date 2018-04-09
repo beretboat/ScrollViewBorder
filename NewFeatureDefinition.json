@@ -1,0 +1,30 @@
+﻿var newFeatureJson = 
+{
+    "FileTabQuickViewButton": {
+        "Title":"Choose Named Page Setup",
+        "Description": "You can now apply a named page setup to multiple layouts from Quick View. You can also apply a named page setup from the Layout tab context menu.",
+        "LearnMoreURL": "https://help-staging.autodesk.com/view/ACDMAC/2018/ENU/?contextId=QuickViewDialogToolTip"
+    },    
+    "Command_ID_Purge": {
+        "Title":"Purge All",
+        "Command":"PURGE",
+        "Description": "Quickly reduce file size by purging all items in one pass, including nested items and orphaned data.",
+        "LearnMoreURL": "https://help-staging.autodesk.com/view/ACDMAC/2018/ENU/?contextId=-PURGEToolTip"
+    },    
+    "Command_ID_Print": {
+        "Title":"Plot Settings",
+        "Command":"PLOT",
+        "Description": "You can now save the current plot settings and automatically use them on your next plot. Also, select 'Save to PDF' to quickly create a PDF file with the current settings.",
+        "LearnMoreURL": "https://help-statging.autodesk.com/view/ACDMAC/2018/ENU/?contextId=PlotDialogToolTip"
+    },
+    "Command_ID_NEWVIEW": {
+        "Title":"New View",
+        "Description": "...",
+        "LearnMoreURL": "https://help-staging.autodesk.com/view/ACDMAC/2018/ENU/?contextId=NewViewDialogToolTip"
+    },
+    "Command_ID_INSERTVIEW": {
+        "Title":"Insert View",
+        "Description": "...",
+        "LearnMoreURL": "https://help-staging.autodesk.com/view/ACDMAC/2018/ENU/?contextId=InsertViewGalleryToolTip",
+    }
+}
