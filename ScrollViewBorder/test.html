@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <body style="background-color:powderblue;"></body>
+  <head>
+    <title>WebKit Example</title>
+    <style type="text/css">
+      * {
+        font-size: 20px;
+      }
+    </style>
+  </head>
+  
+  <body>
+    <div style="margin-top: 50px">
+      <div><input type="button" value="execAsync" onclick="postToNative('Hello')"></div>
+      <div><input type="button" value="fetchTest" onclick="fetchTest()"></div>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <span id="myspan"> Web Label </span>
+    </div>
+    <br/>
+    
+<!--    <iframe src="" id="myframe"></iframe>-->
+<!--    <iframe src="https://www.bing.com" title="Bing Frame"></iframe> -->
+
+    <script type="text/javascript">
+   
+    ////////////////////////
+    //registerCallback
+    function mouseEventCallback(args) {
+        const obj = JSON.parse(args);
+        showMessage(obj["bla"], "registerCallback");
+        return {retValue: "String From JS", retCode: 0};
+    }
+    
+    registerCallback('Ac_Foo.mouseEvent', mouseEventCallback);
+
+    
+<!--    document.getElementById("myframe").src = window.location.href.replace("test.html", "iframe.html");-->
+    
+    
+    ////////////////////////
+    //execAsync
+    function showMessage(message, source) {
+        document.getElementById("myspan").textContent = message + " -- " + source;
+    }
+    
+    async function fetchTest() {
+    // This URL is 'generated' by the native code.  Normally would be the result of a Javascript API call
+    // for testing, just rely on the first generated URL to always be 0.
+        var t = await fetch("local:///Users/qiur/Downloads/Drawing21.dwg");
+        var result = await t.blob();
+        var resultAsText = await result.text();
+        console.log(resultAsText);
+    }
+
+   
+    function postToNative(message) {
+        var X = { a: true, b: 1 }
+        var Y = { blah: "blah", blee: { a: false, b: 2 } };
+        var args = { functionName: "Ac_Foo.getFubar", invokeAsCommand: false, functionParams: {x: X, y: Y} };
+        execAsync(JSON.stringify(args),
+                  function (value) {
+                    var resObj = JSON.parse(value);
+                    console.log(resObj);
+                    showMessage(resObj['retValue']['stringResult'], "execAsync");
+                  },
+                  function (value) {
+                    showMessage('ERROR', "execAsync");
+                  }
+        );
+    }
+   
+   </script>
+  </body>
+</html>
